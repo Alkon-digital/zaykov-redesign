@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ЗайковПро — Эксперт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;600;800;900&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+/* Концепция 3 «Эксперт»: личный бренд, журнальная вёрстка. Гигантская типографика, слои вокруг фигуры Сергея, кинематографичный скролл. */
+:root{
+  --indigo:#19044F;      /* фирменный */
+  --indigo-2:#22086A;
+  --blue:#4F87FB;        /* фирменный */
+  --paper:#FFFFFF;
+  --mist:#F1F6FB;        /* фирменный светлый */
+  --ink:#19044F;
+  --soft:#6A6487;
+  --rule:#E3E6F0;
+  --disp:"Geologica","Golos Text",system-ui,sans-serif;
+  --text:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:clamp(16px,4vw,60px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1400px;margin:0 auto;padding-inline:var(--gut)}
+h1,h2,h3{font-family:var(--disp);margin:0;letter-spacing:-.035em;text-wrap:balance}
+.kicker{font:600 13px/1 var(--text);letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:20px 30px;border-radius:100px;font:600 16px/1 var(--text);border:0;cursor:pointer;background:var(--blue);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.btn::before{content:"";position:absolute;inset:0;background:var(--indigo);transform:translateY(101%);transition:transform .45s cubic-bezier(.7,0,.2,1);z-index:-1;border-radius:inherit}
+.btn:hover::before{transform:none}
+.btn.on-dark::before{background:#fff}
+.btn.on-dark:hover{color:var(--indigo)}
+
+/* header */
+.hdr{position:fixed;inset:0 0 auto;z-index:60;padding-top:env(safe-area-inset-top,0px);color:#fff;transition:background .4s,color .4s,box-shadow .4s}
+.hdr.light{background:rgba(255,255,255,.86);backdrop-filter:blur(14px);color:var(--indigo);box-shadow:0 1px 0 var(--rule)}
+.hdr.light .wrap{height:72px}
+.hdr .lg-d{display:none}.hdr.light .lg-d{display:block}.hdr.light .lg-l{display:none}
+.hdr .wrap{display:flex;justify-content:space-between;align-items:center;height:90px;gap:20px}
+.hdr img{height:26px;width:auto}
+.hdr .wrap{transition:height .4s}
+.hdr nav{display:flex;gap:28px;font-size:15px;font-weight:500}
+.hdr nav a{opacity:.8}.hdr nav a:hover{opacity:1}
+.hdr .ph{font-weight:600;font-size:15px}
+@media (max-width:980px){.hdr nav{display:none}}
+
+/* hero */
+.hero{position:relative;background:var(--indigo);color:#fff;min-height:min(100vh,1000px);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 55% at 50% 60%,rgba(79,135,251,.55),transparent 70%)}
+.giant{position:absolute;left:0;right:0;font:900 clamp(40px,10.4vw,190px)/.82 var(--disp);text-align:center;letter-spacing:-.055em;white-space:nowrap;text-transform:uppercase;pointer-events:none}
+.giant.g1{top:clamp(120px,20vh,210px);color:rgba(255,255,255,.95);z-index:1}
+.giant.g2{top:calc(clamp(120px,20vh,210px) + .84em);color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.9);z-index:3}
+.giant span{display:inline-block;will-change:transform}
+.hero-fig{position:relative;z-index:2;width:min(500px,64vw);margin:0 auto -2px;transform-origin:bottom center}
+.hero-fig img{width:100%;transform-origin:bottom center;filter:drop-shadow(0 -10px 60px rgba(79,135,251,.35))}
+.hero-bottom{position:absolute;left:0;right:0;bottom:0;z-index:4;padding-bottom:36px}
+.hero-bottom .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.hero-bottom p{max-width:340px;margin:0;font-size:16px;line-height:1.5;color:rgba(255,255,255,.85);background:rgba(25,4,79,.55);backdrop-filter:blur(10px);padding:18px 20px;border-radius:18px}
+.hero-bottom p b{color:#fff}
+.scroll-hint{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.scroll-hint i{width:1px;height:46px;background:rgba(255,255,255,.3);position:relative;overflow:hidden}
+.scroll-hint i::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:#fff;animation:sh 1.8s cubic-bezier(.7,0,.2,1) infinite}
+@keyframes sh{to{top:46px}}
+@media (max-width:760px){
+  .hero{min-height:auto;padding-top:150px}
+  .giant.g1{top:100px}.giant.g2{top:calc(100px + .84em)}
+  .hdr .ph{font-size:13px}
+  .hero-bottom{position:relative;padding-top:0;margin-top:-80px}
+  .hero-bottom .wrap{flex-direction:column;align-items:stretch}
+  .scroll-hint{display:none}
+  .hero-fig{width:86vw}
+}
+
+/* statement */
+.statement{padding-block:clamp(100px,14vw,200px)}
+.statement .kicker{display:block;margin-bottom:40px}
+.statement h2{font:600 clamp(32px,4.6vw,72px)/1.08 var(--disp);letter-spacing:-.035em;max-width:1200px}
+.statement h2 .line{display:block;overflow:hidden}
+.statement h2 .line>span{display:block}
+.statement h2 em{font-style:normal;color:var(--blue)}
+.statement .sub{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:80px;padding-top:40px;border-top:1px solid var(--rule)}
+.statement .sub b{display:block;font:800 clamp(44px,5vw,76px)/1 var(--disp);letter-spacing:-.05em}
+.statement .sub span{display:block;color:var(--soft);font-size:16px;margin-top:10px;max-width:260px}
+@media (max-width:760px){.statement .sub{grid-template-columns:1fr;gap:28px}}
+
+/* zoom image */
+.zoom{height:240vh;position:relative}
+.zoom-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
+.zoom-fig{position:absolute;inset:0;clip-path:inset(22% 30% 22% 30% round 40px);will-change:clip-path}
+.zoom-fig img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(1.25);will-change:transform}
+.zoom-fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(25,4,79,.75))}
+.zoom-cap{position:absolute;left:var(--gut);right:var(--gut);bottom:8vh;z-index:2;color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.zoom-cap h3{font:700 clamp(30px,4vw,62px)/1.02 var(--disp);max-width:820px}
+.zoom-cap p{max-width:360px;margin:0;color:rgba(255,255,255,.85);font-size:16px}
+@media (prefers-reduced-motion:reduce){.zoom{height:auto}.zoom-sticky{position:relative;height:80vh}.zoom-fig{clip-path:none}}
+
+/* principles */
+.principles{background:var(--mist);padding-block:clamp(100px,12vw,180px)}
+.pr-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(30px,6vw,100px)}
+.pr-words{list-style:none;margin:0;padding:0}
+.pr-words li{font:900 clamp(52px,9vw,150px)/.95 var(--disp);letter-spacing:-.055em;text-transform:uppercase;color:rgba(25,4,79,.1);transition:color .5s;cursor:default;padding-block:.04em}
+.pr-words li.on{color:var(--indigo)}
+.pr-words li.on::after{content:"";display:inline-block;width:.18em;height:.18em;border-radius:50%;background:var(--blue);margin-left:.12em;vertical-align:.08em}
+.pr-desc{position:sticky;top:30vh;align-self:start}
+.pr-desc .kicker{display:block;margin-bottom:24px}
+.pr-desc h3{font-size:32px;line-height:1.1;margin-bottom:16px}
+.pr-desc p{color:var(--soft);margin:0;min-height:7.5em}
+@media (max-width:860px){.pr-grid{grid-template-columns:1fr}.pr-desc{position:relative;top:0}}
+
+/* services stack */
+.services{padding-block:clamp(100px,12vw,170px) 40px}
+.services-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:60px;flex-wrap:wrap}
+.services-head h2{font:800 clamp(44px,7vw,110px)/.92 var(--disp);letter-spacing:-.05em}
+.services-head p{max-width:400px;color:var(--soft);margin:0}
+.stack{display:grid;gap:0}
+.card{position:sticky;top:calc(100px + var(--i) * 22px);min-height:520px;border-radius:36px;padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;margin-bottom:28px;transform-origin:center top;box-shadow:0 -20px 60px -30px rgba(25,4,79,.35);overflow:hidden}
+.card .n{font:600 14px/1 var(--text);letter-spacing:.14em;opacity:.7}
+.card h3{font:800 clamp(36px,4.6vw,72px)/.98 var(--disp);letter-spacing:-.045em;margin:20px 0 22px}
+.card p{margin:0 0 26px;max-width:480px;opacity:.85}
+.card ul{list-style:none;margin:0 0 30px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.card li{font-size:14px;padding:9px 14px;border-radius:100px;border:1px solid currentColor;opacity:.85}
+.card .price{font:700 24px/1.2 var(--disp);letter-spacing:-.02em}
+.card .price small{display:block;font:400 14px/1.4 var(--text);opacity:.7;margin-top:4px}
+.card figure{margin:0;border-radius:24px;overflow:hidden;align-self:stretch;min-height:280px}
+.card figure img{width:100%;height:100%;object-fit:cover}
+.c-indigo{background:var(--indigo);color:#fff}
+.c-blue{background:var(--blue);color:#fff}
+.c-mist{background:var(--mist);color:var(--indigo)}
+.c-white{background:#fff;color:var(--indigo);border:1px solid var(--rule)}
+.card .ai-demo{background:rgba(255,255,255,.1);border-radius:24px;padding:24px;display:grid;gap:12px;align-content:center;font-size:15px}
+.card .ai-demo .q{justify-self:end;background:#fff;color:var(--indigo);padding:12px 16px;border-radius:16px 16px 4px 16px;max-width:85%}
+.card .ai-demo .a{background:var(--indigo-2);padding:14px 18px;border-radius:16px 16px 16px 4px;max-width:92%;line-height:1.5}
+.card .ai-demo .a b{color:#8FB3FF}
+@media (max-width:860px){.card{grid-template-columns:1fr;position:relative;top:0;min-height:0}.card figure{min-height:220px}}
+
+/* marquee */
+.band{background:var(--indigo);color:#fff;padding-block:50px;overflow:hidden}
+.band-row{display:flex;white-space:nowrap;font:900 clamp(60px,10vw,160px)/1 var(--disp);letter-spacing:-.05em;text-transform:uppercase;will-change:transform}
+.band-row span{padding-right:.4em}
+.band-row .o{color:transparent;-webkit-text-stroke:2px #fff}
+.band-row .b{color:var(--blue)}
+
+/* reviews */
+.reviews{padding-block:clamp(100px,12vw,170px)}
+.rv-shell{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(30px,6vw,90px);align-items:center}
+.rv-photo{position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;max-width:440px;width:100%;background:var(--mist)}
+.rv-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.1);transition:opacity .7s,transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.rv-photo img.on{opacity:1;transform:none}
+.rv-ring{position:absolute;inset:-14px;border-radius:50%;border:2px solid var(--blue);border-right-color:transparent;animation:spin 14s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rv-photo-wrap{position:relative;max-width:440px}
+.rv-text{min-width:0}
+.rv-text blockquote{margin:24px 0 36px;font:500 clamp(24px,2.6vw,40px)/1.25 var(--disp);letter-spacing:-.025em;min-height:5.2em}
+.rv-text .who b{display:block;font-size:20px}
+.rv-text .who span{color:var(--soft);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.rv-nav{display:flex;align-items:center;gap:14px;margin-top:40px}
+.rv-nav button{width:60px;height:60px;border-radius:50%;border:1px solid var(--rule);background:#fff;cursor:pointer;font-size:20px;color:var(--indigo);transition:background .3s,color .3s}
+.rv-nav button:hover{background:var(--indigo);color:#fff}
+.rv-count{font:600 15px/1 var(--disp);margin-left:10px;font-variant-numeric:tabular-nums}
+.rv-bar{flex:1;max-width:200px;height:2px;background:var(--rule);position:relative}
+.rv-bar i{position:absolute;inset:0;background:var(--blue);transform-origin:left;transform:scaleX(0)}
+@media (max-width:860px){.rv-shell{grid-template-columns:1fr}.rv-photo-wrap{max-width:260px}}
+
+/* press */
+.press{padding-bottom:clamp(100px,12vw,170px)}
+.press h2{font:800 clamp(40px,6vw,90px)/.95 var(--disp);letter-spacing:-.05em;margin-bottom:50px}
+.press-row{display:grid;grid-template-columns:110px 1fr auto;gap:30px;align-items:center;padding:34px 0;border-top:1px solid var(--rule);position:relative;transition:padding .4s}
+.press-row:last-child{border-bottom:1px solid var(--rule)}
+.press-row .src{font:800 20px/1 var(--disp);color:var(--blue)}
+.press-row h3{font:600 clamp(20px,2.2vw,30px)/1.2 var(--disp);letter-spacing:-.02em}
+.press-row p{margin:8px 0 0;color:var(--soft);font-size:15px;max-width:720px}
+.press-row .go{width:56px;height:56px;border-radius:50%;background:var(--mist);display:grid;place-items:center;transition:all .4s;font-size:20px}
+.press-row:hover{padding-inline:20px}
+.press-row:hover .go{background:var(--blue);color:#fff;transform:rotate(-45deg)}
+@media (max-width:700px){.press-row{grid-template-columns:1fr auto}.press-row .src{grid-column:1/-1}}
+
+/* final */
+.final{background:var(--indigo);color:#fff;padding-block:clamp(100px,13vw,190px) 60px;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;width:900px;height:900px;left:50%;top:10%;transform:translateX(-50%);background:radial-gradient(circle,rgba(79,135,251,.45),transparent 60%);pointer-events:none}
+.final .wrap{position:relative}
+.final h2{font:900 clamp(48px,9vw,150px)/.88 var(--disp);letter-spacing:-.055em;text-transform:uppercase}
+.final h2 .o{color:transparent;-webkit-text-stroke:2px #fff}
+.final-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:70px;align-items:end}
+.final p{color:rgba(255,255,255,.8);max-width:460px;margin:0}
+.sign{width:200px;filter:invert(1) brightness(2);margin-top:30px;opacity:.9}
+.f-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-form input{grid-column:span 1;padding:20px 22px;border-radius:100px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;font:500 16px/1 var(--text);outline:none;transition:border-color .3s;min-width:0}
+.f-form input::placeholder{color:rgba(255,255,255,.55)}
+.f-form input:focus{border-color:var(--blue)}
+.f-form .btn{grid-column:1/-1;justify-content:center}
+.f-form small{grid-column:1/-1;color:rgba(255,255,255,.55);font-size:12px}
+.f-form .ok{grid-column:1/-1;color:#7CE0B0;font-weight:600}
+.ftr{margin-top:100px;padding-top:30px;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.6)}
+.ftr b{color:#fff}
+@media (max-width:860px){.final-grid{grid-template-columns:1fr}.f-form{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="wrap">
+    <a href="#top" aria-label="ЗайковПро — на главную"><img class="lg-l" src="assets/logo-light.svg" alt="ЗайковПро"><img class="lg-d" src="assets/logo.svg" alt=""></a>
+    <nav aria-label="Основное меню"><a href="#approach">Подход</a><a href="#services">Услуги</a><a href="#reviews">Отзывы</a><a href="#press">Публикации</a><a href="#contact">Контакты</a></nav>
+    <span class="ph">+7 (906) 891-07-49</span>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="giant g1" aria-hidden="true"><span id="g1">Медицинский</span></div>
+  <div class="hero-fig" id="fig"><img src="assets/doctor.png" alt="Сергей Зайков" width="806" height="1000"></div>
+  <div class="giant g2" aria-hidden="true"><span id="g2">маркетинг</span></div>
+  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Сергей Зайков — медицинский маркетинг для стоматологий и клиник</h1>
+  <div class="hero-bottom">
+    <div class="wrap">
+      <p><b>Сергей Зайков.</b> Помогаю стоматологиям и медцентрам получать больше первичных пациентов — без перегрузки команды и штрафов за рекламу.</p>
+      <a class="btn on-dark" href="#contact">Обсудить мою клинику →</a>
+      <span class="scroll-hint"><i></i>Листайте</span>
+    </div>
+  </div>
+</section>
+
+<section class="statement" id="approach">
+  <div class="wrap">
+    <span class="kicker">Подход</span>
+    <h2 id="stmt">
+      <span class="line"><span>Я не «ломаю» то, что уже</span></span>
+      <span class="line"><span>приносит клинике доход.</span></span>
+      <span class="line"><span>Я нахожу <em>узкие места,</em></span></span>
+      <span class="line"><span><em>которые становятся</em></span></span>
+      <span class="line"><span><em>точкой роста.</em></span></span>
+    </h2>
+    <div class="sub">
+      <div><b data-n="18">18+</b><span>лет в маркетинге медицинских услуг</span></div>
+      <div><b data-n="150">150+</b><span>стоматологий и медцентров среди клиентов</span></div>
+      <div><b data-n="100">100+</b><span>проектов в ТОП-10 Яндекса</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="zoom" aria-label="Работаем внутри клиники">
+  <div class="zoom-sticky">
+    <figure class="zoom-fig" id="zoomFig" style="margin:0"><img src="assets/sergey.jpg" alt="Сергей Зайков в стоматологическом кабинете" id="zoomImg"></figure>
+    <div class="zoom-cap" id="zoomCap">
+      <h3>Начинаю не с рекламы, а с кабинета клиники</h3>
+      <p>Считаю ёмкость кресел и загрузку врачей. Так реклама приводит ровно столько пациентов, сколько клиника может принять.</p>
+    </div>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="wrap pr-grid">
+    <ul class="pr-words" id="prWords">
+      <li data-t="Цифры" data-d="Каждое решение опирается на данные: загрузку клиники, конверсию администраторов и врачей, цену пациента по каждому каналу. Отчитываемся в пациентах и рублях.">Цифры</li>
+      <li data-t="Маркетинг" data-d="SEO, контекст, таргет, карты и нейросети — подбираем каналы под экономику клиники, а не включаем всё подряд.">Маркетинг</li>
+      <li data-t="Креатив" data-d="Позиционирование, которое отличает клинику от соседей по улице. Тексты и визуал, которые понятны пациенту и не пугают его.">Креатив</li>
+      <li data-t="Закон" data-d="Реклама медицинских услуг по 38-ФЗ: предупреждения, маркировка, никаких гарантий результата лечения. Клиника защищена от штрафов ФАС.">Закон</li>
+    </ul>
+    <div class="pr-desc" aria-live="polite"><span class="kicker">Четыре опоры подхода</span><h3 id="prT">Цифры</h3><p id="prD">Каждое решение опирается на данные: загрузку клиники, конверсию администраторов и врачей, цену пациента по каждому каналу. Отчитываемся в пациентах и рублях.</p></div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="services-head"><h2>Что<br>делаем</h2><p>Комплексные решения для продвижения клиник. Каждую услугу можно взять отдельно, но лучше всего они работают вместе.</p></div>
+    <div class="stack" id="stack">
+      <article class="card c-indigo" style="--i:0"><div><span class="n">01 / 06</span><h3>Аудит маркетинга</h3><p>Изучаем позиционирование, каналы и бизнес-процессы. Проверяем домены, хостинг, справочники и принадлежность аккаунтов клинике.</p><ul><li>позиционирование</li><li>качество трафика</li><li>доступы</li><li>архитектура сайта</li></ul><div class="price">от 50 000 ₽<small>результат: таблица доступов, узкие места, рекомендации</small></div></div><figure><img src="assets/hero1.jpg" alt=""></figure></article>
+      <article class="card c-blue" style="--i:1"><div><span class="n">02 / 06</span><h3>Продвижение в нейросетях</h3><p>Пациенты всё чаще спрашивают Алису и ChatGPT, куда пойти лечить зубы. Делаем так, чтобы ИИ называл вашу клинику.</p><ul><li>аудит видимости в ИИ</li><li>сайт и карточки</li><li>статьи врачей</li></ul><div class="price">новое направление<small>стоимость — после аудита</small></div></div>
+        <div class="ai-demo" aria-label="Пример ответа нейросети"><span class="q">Где в Москве надёжно поставить импланты?</span><span class="a">Пациенты часто рекомендуют <b>клинику «Ваша клиника»</b>: фиксированная цена в договоре, опытный хирург-имплантолог и высокий рейтинг на картах.</span><span style="font-size:12px;opacity:.7">пример ответа ИИ-ассистента</span></div></article>
+      <article class="card c-mist" style="--i:2"><div><span class="n">03 / 06</span><h3>SEO-продвижение</h3><p>Семантика по услугам, врачам и районам. Структура и контент, которые отвечают на вопросы пациентов лучше конкурентов.</p><ul><li>семантика</li><li>структура</li><li>контент</li><li>техника</li><li>Метрика и Вебмастер</li></ul><div class="price">от 150 000 ₽/мес<small>Москва и СПб — по согласованию</small></div></div><figure><img src="assets/hero3.jpg" alt=""></figure></article>
+      <article class="card c-white" style="--i:3"><div><span class="n">04 / 06</span><h3>Контекст и таргет</h3><p>Медиапланирование и юнит-экономика. Коллтрекинг с первого дня, чтобы видеть цену пациента, а не клика.</p><ul><li>Яндекс Директ</li><li>ВКонтакте</li><li>Telegram</li><li>креативы</li></ul><div class="price">от 55 000 ₽/мес<small>плюс рекламный бюджет от 70 000 ₽/мес</small></div></div><figure><img src="assets/hero2.jpg" alt=""></figure></article>
+      <article class="card c-indigo" style="--i:4"><div><span class="n">05 / 06</span><h3>Сквозная аналитика</h3><p>Оцифровываем пациентопоток и связываем рекламу, звонки и МИС. Видно, какой канал привёл пациента в кресло и сколько он принёс.</p><ul><li>аудит аналитики</li><li>синхронизация с МИС</li><li>BI-дашборды</li></ul><div class="price">настройка 155 000 ₽<small>сопровождение 25 000 ₽/мес</small></div></div><figure><img src="assets/hero4.jpg" alt=""></figure></article>
+      <article class="card c-blue" style="--i:5"><div><span class="n">06 / 06</span><h3>Сайт клиники</h3><p>От анализа конкурентов и прототипа до публикации. SEO-структура закладывается с первого дня.</p><ul><li>прототип и UX</li><li>дизайн</li><li>вёрстка</li><li>CMS</li></ul><div class="price">от 120 000 ₽<small>уникальный сайт — от 350 000 ₽</small></div></div><figure><img src="assets/hero5.jpg" alt=""></figure></article>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true">
+  <div class="band-row" id="band1"><span>SEO</span><span class="o">Директ</span><span class="b">Нейросети</span><span>Таргет</span><span class="o">Аналитика</span><span>SEO</span><span class="o">Директ</span><span class="b">Нейросети</span><span>Таргет</span><span class="o">Аналитика</span></div>
+</div>
+
+<section class="reviews" id="reviews">
+  <div class="wrap rv-shell">
+    <div class="rv-photo-wrap"><div class="rv-photo" id="rvPhoto"></div><span class="rv-ring" aria-hidden="true"></span></div>
+    <div class="rv-text">
+      <span class="kicker">Отзывы клиентов</span>
+      <blockquote id="rvQ"></blockquote>
+      <div class="who"><b id="rvN"></b><span id="rvR"></span></div>
+      <div class="rv-nav"><button id="rvPrev" aria-label="Предыдущий отзыв">←</button><button id="rvNext" aria-label="Следующий отзыв">→</button><span class="rv-count" id="rvC">01 / 05</span><span class="rv-bar"><i id="rvBar"></i></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="press" id="press">
+  <div class="wrap">
+    <span class="kicker" style="display:block;margin-bottom:20px">Колонки в РБК</span>
+    <h2>Пишу о том, что<br>работает</h2>
+    <a class="press-row" href="#"><span class="src">РБК</span><div><h3>Что такое клиентский путь пациента и почему он важен для клиники</h3><p>Каждое касание — звонок, запись, визит — формирует впечатление о клинике.</p></div><span class="go">↗</span></a>
+    <a class="press-row" href="#"><span class="src">РБК</span><div><h3>Маркетинг не альтернативной медицины: в чём риск</h3><p>Регуляторные режимы, опасные формулировки и основа доверия.</p></div><span class="go">↗</span></a>
+    <a class="press-row" href="#"><span class="src">РБК</span><div><h3>Экосистема партнёров как драйвер роста медицинской клиники</h3><p>Аптеки, страховые и лаборатории: форматы и план запуска.</p></div><span class="go">↗</span></a>
+  </div>
+</section>
+
+<section class="final" id="contact">
+  <div class="wrap">
+    <span class="kicker" style="color:#8FB3FF">Личная консультация</span>
+    <h2 style="margin-top:28px">Давайте<br><span class="o">найдём</span><br>точку роста</h2>
+    <div class="final-grid">
+      <div>
+        <p>Оставьте телефон — я лично перезвоню, задам пять вопросов о клинике и скажу, с чего начать. Это бесплатно.</p>
+        <img class="sign" src="assets/about2.png" alt="Подпись Сергея Зайкова">
+      </div>
+      <form class="f-form" id="form" novalidate>
+        <input id="f-name" placeholder="Имя" autocomplete="name" aria-label="Имя">
+        <input id="f-phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" aria-label="Телефон">
+        <button class="btn on-dark" type="submit">Жду звонка →</button>
+        <small>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</small>
+        <span class="ok" id="ok" hidden>Заявка принята (демо-форма макета)</span>
+      </form>
+    </div>
+    <div class="ftr">
+      <div><b>+7 (906) 891-07-49</b> · info@zaykov.pro · ПН–ПТ 10:00–20:00</div>
+      <div>ИП Зайков С. В. · ИНН 744717172566 · Москва, Большой Саввинский пер., 12, стр. 8</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- шапка: светлая вне тёмных секций ---------- */
+(() => {
+  const hdr = document.querySelector('.hdr'), darks = [...document.querySelectorAll('.hero,.band,.final')];
+  const upd = () => { const y = 40; hdr.classList.toggle('light', !darks.some(d => { const r = d.getBoundingClientRect(); return r.top <= y && r.bottom > y; })); };
+  addEventListener('scroll', upd, { passive: true }); upd();
+})();
+
+/* ---------- герой: вход и параллакс слоёв ---------- */
+if (!reduce) {
+  gsap.timeline({ defaults: { ease: 'expo.out' } })
+    .from('#g1', { xPercent: -40, opacity: 0, duration: 1.6 })
+    .from('#g2', { xPercent: 40, opacity: 0, duration: 1.6 }, '<')
+    .from('#fig', { yPercent: 30, duration: 1.6 }, '<.15')
+    .from('.hero-bottom .wrap>*', { y: 30, opacity: 0, stagger: .1, duration: 1 }, '-=1');
+
+  // строки разъезжаются при скролле, фигура уходит вниз
+  const st = { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true };
+  gsap.fromTo('.giant.g1', { xPercent: 0 }, { xPercent: -22, ease: 'none', immediateRender: false, scrollTrigger: st });
+  gsap.fromTo('.giant.g2', { xPercent: 0 }, { xPercent: 18, ease: 'none', immediateRender: false, scrollTrigger: st });
+  gsap.fromTo('.hero-fig img', { scale: 1, yPercent: 0 }, { scale: .86, yPercent: 8, ease: 'none', immediateRender: false, scrollTrigger: st });
+
+  // мышь двигает слои с разной глубиной
+  if (matchMedia('(pointer:fine)').matches) {
+    const hero = document.getElementById('hero');
+    const q = (sel, k) => ({ x: gsap.quickTo(sel, 'x', { duration: .8, ease: 'power3' }), k });
+    const L = [q('#g1', -18), q('#g2', 26), q('#fig', 10)];
+    hero.addEventListener('mousemove', e => { const dx = e.clientX / innerWidth - .5; L.forEach(l => l.x(dx * l.k * 2)); });
+  }
+
+  // манифест — строки выезжают из-под маски
+  gsap.from('#stmt .line>span', { yPercent: 105, duration: 1.2, stagger: .09, ease: 'expo.out', scrollTrigger: { trigger: '#stmt', start: 'top 78%' } });
+
+  // счётчики
+  document.querySelectorAll('[data-n]').forEach(el => {
+    const n = +el.dataset.n, o = { v: 0 };
+    ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: n, duration: 1.8, ease: 'power2.out', onUpdate: () => el.textContent = Math.round(o.v) + '+' }) });
+  });
+
+  // раскрытие фото на весь экран
+  const ztl = gsap.timeline({ scrollTrigger: { trigger: '.zoom', start: 'top top', end: 'bottom bottom', scrub: true } });
+  ztl.fromTo('#zoomFig', { clipPath: 'inset(22% 30% 22% 30% round 40px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none' })
+     .fromTo('#zoomImg', { scale: 1.25 }, { scale: 1, ease: 'none' }, 0)
+     .from('#zoomCap', { y: 60, opacity: 0, ease: 'power2.out', duration: .4 }, .55);
+
+  // стопка карточек: предыдущая уменьшается под следующей
+  ScrollTrigger.matchMedia({ '(min-width: 861px)': () => {
+    const cards = gsap.utils.toArray('.card');
+    cards.forEach((c, i) => { if (i === cards.length - 1) return;
+      gsap.fromTo(c, { scale: 1, filter: 'brightness(1)' }, { scale: .92 + i * .01, filter: 'brightness(.9)', ease: 'none', immediateRender: false, scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 120px', scrub: true } });
+    });
+  } });
+
+  // лента слов зависит от направления скролла
+  const band = document.getElementById('band1');
+  const loop = gsap.to(band, { xPercent: -50, duration: 22, ease: 'none', repeat: -1 });
+  ScrollTrigger.create({ trigger: '.band', start: 'top bottom', end: 'bottom top', onUpdate: s => gsap.to(loop, { timeScale: s.direction * Math.min(4, 1 + Math.abs(s.getVelocity()) / 400), duration: .3, overwrite: true }) });
+}
+
+/* ---------- принципы: активное слово по скроллу ---------- */
+(() => {
+  const items = [...document.querySelectorAll('#prWords li')], T = document.getElementById('prT'), D = document.getElementById('prD');
+  const set = li => { items.forEach(x => x.classList.toggle('on', x === li)); if (T.textContent !== li.dataset.t) { T.textContent = li.dataset.t; D.textContent = li.dataset.d; if (!reduce) gsap.from([T, D], { y: 16, opacity: 0, duration: .5, stagger: .06 }); } };
+  set(items[0]);
+  const pick = () => { const y = innerHeight * .55; let best = items[0], bd = 1e9; items.forEach(li => { const r = li.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - y); if (d < bd) { bd = d; best = li; } }); set(best); };
+  addEventListener('scroll', pick, { passive: true });
+  items.forEach(li => li.addEventListener('mouseenter', () => set(li)));
+})();
+
+/* ---------- отзывы ---------- */
+(() => {
+  const data = [
+    ['assets/t-voronikhin.jpg', 'Начали работать по региону Москва, а в итоге стали первыми от Владивостока до Калининграда без увеличения бюджета — уже через три месяца.', 'Александр Воронихин', 'Сооснователь системы LoyalMed'],
+    ['assets/t-kuznetsov.jpg', 'Посчитали загрузку клиники, кабинетов и врачей по отдельности. Увеличили количество заявок в рамках текущего бюджета и внедрили систему лояльности.', 'Борис Кузнецов', 'Главный врач стоматологии «Доминанта»'],
+    ['assets/t-narimanyan.jpg', 'Организовали переход клиники от «тёплых» пациентов по рекомендации к первичным пациентам из органического трафика.', 'Георгий Нариманян', 'Главный врач клиники «Леонардо»'],
+    ['assets/t-pantsulaya.png', 'Благодаря профессиональному подходу мы заметили улучшение позиций сайта в поиске. Это привело к росту трафика.', 'Виталий Панцулая', 'Основатель Mir Dental Clinic'],
+    ['assets/t-sabiryanov.jpg', 'Сайт заметно поднялся в поиске, продаж стало ощутимо больше, заявки идут стабильно. Всё честно и без пустых обещаний.', 'Наиль Сабирьянов', 'Директор ООО «Квалитет»']
+  ];
+  const ph = document.getElementById('rvPhoto'), Q = document.getElementById('rvQ'), N = document.getElementById('rvN'), R = document.getElementById('rvR'), C = document.getElementById('rvC'), bar = document.getElementById('rvBar');
+  const imgs = data.map(d => { const i = new Image(); i.src = d[0]; i.alt = d[2]; ph.appendChild(i); return i; });
+  let cur = 0, timer, barTw;
+  const show = i => {
+    cur = (i + data.length) % data.length;
+    imgs.forEach((im, j) => im.classList.toggle('on', j === cur));
+    Q.textContent = '«' + data[cur][1] + '»'; N.textContent = data[cur][2]; R.textContent = data[cur][3];
+    C.textContent = String(cur + 1).padStart(2, '0') + ' / 0' + data.length;
+    if (!reduce) {
+      gsap.from([Q, N, R], { y: 24, opacity: 0, duration: .7, stagger: .06, ease: 'power3.out' });
+      barTw && barTw.kill(); barTw = gsap.fromTo(bar, { scaleX: 0 }, { scaleX: 1, duration: 7, ease: 'none' });
+      clearTimeout(timer); timer = setTimeout(() => show(cur + 1), 7000);
+    }
+  };
+  document.getElementById('rvPrev').onclick = () => show(cur - 1);
+  document.getElementById('rvNext').onclick = () => show(cur + 1);
+  show(0);
+})();
+
+document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); document.getElementById('ok').hidden = false; });
+</script>
+</body>
+</html>

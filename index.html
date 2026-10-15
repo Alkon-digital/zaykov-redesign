@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Редизайн zaykov.pro — концепции</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;800&display=swap">
+<style>
+:root{--bg:#F1F6FB;--card:#fff;--indigo:#19044F;--blue:#4F87FB;--muted:#5E6B85;--line:#DCE3EE;--sans:"Onest",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--indigo);font:400 16px/1.6 var(--sans)}
+.wrap{max-width:1360px;margin:0 auto;padding:48px clamp(16px,4vw,48px) 80px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+header img{height:26px;margin-bottom:26px}
+h1{font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-.03em;margin:0}
+header p{max-width:520px;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s}
+.c:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(25,4,79,.35)}
+.pv{position:relative;aspect-ratio:16/11;overflow:hidden;background:#0A0420}
+.pv img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.c:hover .pv img{transform:scale(1.04)}
+.body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.tag{font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+h2{margin:0;font-size:26px;letter-spacing:-.02em}
+.body p{margin:0;color:var(--muted);font-size:15px}
+ul{margin:0;padding-left:18px;font-size:14px;color:var(--indigo)}
+li{margin-bottom:4px}
+.open{margin-top:auto;display:inline-flex;justify-content:center;padding:15px 20px;border-radius:14px;background:var(--blue);color:#fff;font-weight:600;text-decoration:none}
+.notes{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.notes div{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 28px}
+.notes h3{margin:0 0 12px;font-size:19px}
+@media (max-width:1000px){.grid{grid-template-columns:1fr}.notes{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div><img src="assets/logo.svg" alt="ЗайковПро"><h1>Три концепции<br>главной страницы</h1></div>
+    <p>Логотип и фирменные цвета (#19044F и #4F87FB) сохранены. Каждая концепция — рабочий прототип с анимациями: откройте и прокрутите до конца, наводите курсор на блоки.</p>
+  </header>
+  <div class="grid">
+    <article class="c"><div class="pv"><a href="concept-1-impulse.html" tabindex="-1"><img src="assets/preview-1.jpeg" alt="Первый экран концепции 1"></a></div>
+      <div class="body"><span class="tag">Концепция 1 · тёмная</span><h2>«Импульс»</h2><p>Сквозной образ — линия ЭКГ на миллиметровке, которая превращается в график роста. Ощущение технологичного агентства.</p>
+        <ul><li>живая ЭКГ-линия в первом экране</li><li>горизонтальный скролл «путь пациента» из 6 этапов</li><li>превью услуг летит за курсором</li><li>ИИ-чат печатает ответ с вашей клиникой</li><li>манифест проявляется по словам</li></ul>
+        <a class="open" href="concept-1-impulse.html">Открыть концепцию</a></div></article>
+    <article class="c"><div class="pv" style="background:#F1F6FB"><a href="concept-2-dashboard.html" tabindex="-1"><img src="assets/preview-2.jpeg" alt="Первый экран концепции 2"></a></div>
+      <div class="body"><span class="tag">Концепция 2 · светлая</span><h2>«Пульт клиники»</h2><p>Сайт выглядит как продукт: живой дашборд аналитики и интерактив. Аргумент «мы считаем деньги» показан, а не рассказан.</p>
+        <ul><li>3D-дашборд с обновляющимися данными</li><li>бенто-сетка услуг с мини-анимациями</li><li>калькулятор окупаемости рекламы</li><li>шаги работы с линией прогресса</li><li>блок FAQ для SEO</li></ul>
+        <a class="open" href="concept-2-dashboard.html">Открыть концепцию</a></div></article>
+    <article class="c"><div class="pv" style="background:#19044F"><a href="concept-3-expert.html" tabindex="-1"><img src="assets/preview-3.jpeg" alt="Первый экран концепции 3"></a></div>
+      <div class="body"><span class="tag">Концепция 3 · журнальная</span><h2>«Эксперт»</h2><p>Личный бренд Сергея в центре. Крупная типографика, слои вокруг фигуры, кинематографичный скролл.</p>
+        <ul><li>фигура между слоями гигантского текста</li><li>фото раскрывается на весь экран при скролле</li><li>карточки услуг складываются стопкой</li><li>лента слов ускоряется от скорости скролла</li><li>финал с подписью Сергея</li></ul>
+        <a class="open" href="concept-3-expert.html">Открыть концепцию</a></div></article>
+  </div>
+  <div class="notes">
+    <div><h3>Что изменили в контенте</h3><ul>
+      <li>Убрали «ТОП-10 за 1 день» — обещание вызывает недоверие и рискованно с точки зрения закона о рекламе.</li>
+      <li>Добавили направление «Продвижение в нейросетях» — по аудиту это самый частотный новый запрос (713/мес).</li>
+      <li>Главный оффер сместили с «услуг» на результат: пациенты в кресле и цена пациента.</li>
+      <li>Сломанные счётчики «0%» заменили подтверждёнными цифрами: 18+ лет, 150+ клиентов, 100+ проектов в ТОП-10, 50+ кейсов.</li>
+      <li>Добавили H1, блок про 38-ФЗ и FAQ — это закрывает замечания SEO-аудита.</li>
+    </ul></div>
+    <div><h3>Что уточнить перед финалом</h3><ul>
+      <li>Данные в дашборде, ИИ-чате и калькуляторе — демонстрационные, помечены на макете.</li>
+      <li>Нужны 2–3 кейса с цифрами (рост заявок, цена пациента) — их можно вынести в отдельный блок.</li>
+      <li>Ссылки на статьи РБК и страницы услуг пока заглушки.</li>
+      <li>Можно смешивать: например, первый экран из «Эксперта», калькулятор из «Пульта».</li>
+    </ul></div>
+  </div>
+</div>
+</body>
+</html>
